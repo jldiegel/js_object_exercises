@@ -16,7 +16,30 @@
     // Put your code here!
     ///////////////////////////
 
-    
+    function LivingThing(name, health){
+      this.name = name;
+      this.health = health;
+
+      this.isAlive = function(){
+
+        //you can do it this way
+        //if(this.health > 0){
+        //  return true
+        //}else{
+        //  return false
+        //}
+
+        //or this way
+        return (this.health > 0)
+      }
+    }
+
+    let Rat = new LivingThing("Rat", 5);
+    let Goblin = new LivingThing("Goblin", 30);
+    let Ogre = new LivingThing("Ogre", 80);
+
+    let monsters = [Rat, Goblin, Ogre]
+
     //The code below should work when you are done
     console.log("Are the monsters alive?");
 
@@ -40,7 +63,3 @@
     }
 
 })();
-    
-
-
-    

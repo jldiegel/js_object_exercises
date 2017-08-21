@@ -40,7 +40,68 @@
     // Put your code here!
     ///////////////////////////
 
-    
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+    function LivingThing(monsterName, monsterHealth){
+      let name = monsterName;
+      let health = monsterHealth;
+
+      this.isAlive = function(){
+        return (health > 0)
+      }
+
+      this.getName = function(){
+        return name
+      }
+
+      this.getHealth = function(){
+        return health
+      }
+
+      this.setHealth = function(newHealth){
+        health = newHealth
+      }
+
+    }
+
+    function Hero(heroName, HeroHealth){
+      LivingThing.call(this, heroName, HeroHealth)
+
+      this.attack = function(monster){
+        let heroDamage = getRandomIntInclusive(0,10)
+        let monsterDamage = getRandomIntInclusive(0,10)
+
+        this.setHealth(this.getHealth() - heroDamage)
+        monster.setHealth(monster.getHealth() - monsterDamage)
+
+        console.log(this.getName() + " took " + heroDamage + " damage")
+        console.log(hero.getName() +"'s health is now " + this.getHealth())
+        console.log(monster.getName() + " took " + monsterDamage + " damage")
+        console.log(monster.getName() +"'s health is now " + monster.getHealth())
+      }
+
+      this.fight = function(arrayOfMonsters){
+        for(let i=0; i < arrayOfMonsters.length; i++){
+
+          while (arrayOfMonsters[i].isAlive() && this.isAlive()){
+            this.attack(arrayOfMonsters[i])
+
+          }
+        }
+      }
+    }
+
+    let hero = new Hero("superman", 115)
+
+    let Rat = new LivingThing("Rat", 5);
+    let Goblin = new LivingThing("Goblin", 30);
+    let Ogre = new LivingThing("Ogre", 80);
+
+    let monsters = [Rat, Goblin, Ogre]
 
     //The code below should work when you are done
     console.log("A hero emerges!");
